@@ -119,3 +119,6 @@
     flex-direction: column;
   }
 }
+.mapid {
+  height: 180px;
+}

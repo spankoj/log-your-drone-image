@@ -14,3 +14,10 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* CSS HEX */
+--phthalo-green: #152614ff;
+--forest-green-traditional: #1e441eff;
+--pakistan-green: #2a7221ff;
+--slimy-green: #119822ff;
+--lime-green: #31cb00ff;
