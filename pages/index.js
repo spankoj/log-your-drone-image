@@ -6,10 +6,11 @@ export default function Home() {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
+
   return (
     <main>
       <h1>Welcome to Log Your Drone Image!</h1>
-      <div style={{ height: 400, width: '100%' }}>
+      <div>
         <MapWithNoSSR />
       </div>
     </main>
