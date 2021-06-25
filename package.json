@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "jpeg-exif": "^1.1.4",
     "leaflet": "^1.7.1",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.3.2",

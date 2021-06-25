@@ -23,7 +23,7 @@ const Map = () => {
   return (
     <>
       <MapContainer
-        center={{ lat: 51.505, lng: -0.09 }}
+        center={{ lat: 46.53111111111111, lng: 16.379444444444445 }}
         zoom={13}
         scrollWheelZoom={false}
         style={{ height: 400, width: '100%' }}
