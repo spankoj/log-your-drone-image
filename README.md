@@ -7,6 +7,7 @@ The project is intended to serve educational purposes. Web technologies being ex
 ## Aim
 
 The web application "Log Your Drone Image" (LYDI) would like to make possible for users to log their activities with UAV-s especially drones making benefit of image attributes like geospatial data (GPS coordinates, etc).
+Web page description: 'Web application to collect drone images and its meta-data'
 
 ## Scope - technologies
 
@@ -119,3 +120,7 @@ The web application "Log Your Drone Image" (LYDI) would like to make possible fo
   https://leafletjs.com/reference-1.7.1.html#imageoverlay
 
 - show list of img imstances
+
+- hosting images servecies that get the image and returns a link. the link will be in the data basa (service will get it back) - memem scarper example
+
+- complete the data base schema

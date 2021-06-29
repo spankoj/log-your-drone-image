@@ -1,11 +1,6 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvents,
-} from 'react-leaflet';
+import { Marker, Popup, useMapEvents } from 'react-leaflet';
 
 function LocationMarker() {
   const [position, setPosition] = useState([51.505, -0.09]);
@@ -20,7 +15,15 @@ function LocationMarker() {
   });
   return position === null ? null : (
     <Marker position={position}>
-      <Popup>You are here</Popup>
+      <Popup>
+        You are here
+        {/* <Image
+          src="https://kep.cdn.indexvas.hu/1/0/3851/38518/385187/38518709_931472779e8850f0a7ea12116dc14250_wm.jpg"
+          alt="landing photo"
+          width={200}
+          height={200}
+        /> */}
+      </Popup>
     </Marker>
   );
 }
