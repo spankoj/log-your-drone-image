@@ -1,12 +1,15 @@
 import Link from 'next/link';
+import styles from '../styles/Header.module.css';
 
 export default function Header(props) {
   return (
-    <header>
-      <div>
-        <img src="/images/lydi-logo.png" alt="icon" />
+    <header className={styles.header}>
+      <div className={styles.logo}>
+        <img className={styles.img} src="/images/favicon-lydi.png" alt="icon" />
+        <Link href="/">
+          <a>LYDI</a>
+        </Link>
       </div>
-
       <nav>
         <ul>
           <li>

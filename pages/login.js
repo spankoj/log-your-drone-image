@@ -5,7 +5,7 @@ export default function Login() {
   return (
     <Layout title="Login">
       <div>
-        <h1>Login page will be here</h1>
+        <h2>Login page will be here</h2>
       </div>
       {/* <Link href="/">
         <a>Home</a>

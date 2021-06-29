@@ -10,7 +10,7 @@ export default function MapTest() {
     <Layout title="MapTest">
       <main>
         <div>
-          <h1>Map test</h1>
+          <h2>Map test</h2>
         </div>
         <div>
           <MapWithNoSSR />

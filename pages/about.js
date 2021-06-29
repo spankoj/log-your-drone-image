@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 export default function About() {
   return (
     <Layout title="About">
-      <h1>About</h1>
+      <h2>About</h2>
 
       <p>
         This web site is created by{' '}
