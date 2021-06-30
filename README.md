@@ -20,6 +20,9 @@ Web page description: 'Web application to collect drone images and its meta-data
 - [ ] ESLint
 - [ ] React leaflet
 - [ ] Typescript for leaflet
+- [ ] next-connect // for uploads
+- [ ] multer // for uploads
+- [ ] axios // for uploads
 
 ## Approach
 
@@ -86,17 +89,21 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 1. Upload image
 
-- get meta-data from image
+- [x] get meta-data from image
 
-2. Input fields and button for name and category.
+2. Input fields and button for name and category. -[ ] text + scroll down menu for search place and category
+
 3. place map in a div on a page
 
-- show pin on map (based on gps data)
-- show img preview on map by clicking on the pin
+- [ ] show pin on map (based on gps data)
+- [ ] show img preview on map by clicking on the pin
 - show list of img imstances
 
-4. input field /text + scroll down menu/ for search place and category
-5. fetch all images from data base and show pin(location) on map from all users uploaded images
+4. Search fields -[ ] Search for name and category -[ ] Search for place and time
+
+5. POST and GET images from data base
+
+6. Show pin(location) on map from all users uploaded images
 
 - [ ] Wire frame
 
@@ -108,19 +115,34 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 1. Upload image
 
-- get meta-data from image
-  https://www.exif.org/
-  npm: exif, exif-js
+- [ ] https://betterprogramming.pub/upload-files-to-next-js-with-api-routes-839ce9f28430
+
+- [x] get meta-data from image
+      https://www.exif.org/
+      npm: exif, exif-js
+
+2. Input fields and button for name and category.
+
+- [ ] Create form
+- [ ] should it be a component?
+- [ ] input text with use state
+- [ ] input select simple (hard coded) later dinamic?
 
 3. place map in a div on a page
 
-- show pin on map (based on gps data)
+- [x] show pin on map
+- [ ] show pin on map (based on gps data)
 
 - show img preview on map by clicking on the pin
   https://leafletjs.com/reference-1.7.1.html#imageoverlay
 
-- show list of img imstances
+- show list of img istances
+
+5. POST and GET images from data base
+
+- [x] create database schema
+- [ ] complete the data base schema and check it with Jose before creating tables
+
+6. Store images?
 
 - hosting images servecies that get the image and returns a link. the link will be in the data basa (service will get it back) - memem scarper example
-
-- complete the data base schema

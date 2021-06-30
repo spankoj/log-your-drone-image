@@ -1,5 +1,5 @@
-// import fs from 'fs';
-// import exif from 'jpeg-exif';
+import fs from 'fs';
+import exif from 'jpeg-exif';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
@@ -10,8 +10,11 @@ export default function Home({ exifData }) {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
-  // alert(exifData.GPSInfo.GPSAltitude);
-  // console.log(exifData);
+  const latitude =
+    exifData.GPSInfo.GPSLatitude[0] + '.' + exifData.GPSInfo.GPSLatitude[1];
+  console.log(exifData.GPSInfo.GPSAltitude[0]);
+  // alert(exifData.GPSInfo.GPSLatitude[0]);
+  alert(latitude);
 
   return (
     <Layout>
@@ -28,14 +31,14 @@ export default function Home({ exifData }) {
   );
 }
 // Import use get server side props syntax
-// export async function getServerSideProps() {
-//   const filePath = './public/images/dimg-kassai.jpg';
-//   const buffer = fs.readFileSync(filePath);
-//   const exifData = exif.fromBuffer(buffer);
+export async function getServerSideProps() {
+  const filePath = './public/uploads/DJI_0001.jpg';
+  const buffer = fs.readFileSync(filePath);
+  const exifData = exif.fromBuffer(buffer);
 
-//   return {
-//     props: {
-//       exifData,
-//     },
-//   };
-// }
+  return {
+    props: {
+      exifData,
+    },
+  };
+}

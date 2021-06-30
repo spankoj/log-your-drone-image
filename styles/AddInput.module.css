@@ -1,0 +1,29 @@
+.form {
+  margin: 40px 200px;
+}
+
+.control {
+  margin: 20px 0;
+}
+
+.label {
+  display: block;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 17px;
+}
+
+.upload {
+  display: flex;
+  flex-direction: row;
+}
+
+.labelUpload {
+  display: block;
+  margin-right: 30px;
+}
