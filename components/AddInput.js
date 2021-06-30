@@ -1,7 +1,14 @@
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/AddInput.module.css';
 
 function AddInput() {
+  const [nameField, setNameField] = useState('');
+  const [category, setCategory] = useState('');
+
+  const handleNameField = (e) => {
+    setNameField(e.target.value);
+  };
+
   return (
     <form className={styles.form}>
       <div className={styles.control}>

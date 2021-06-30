@@ -21,6 +21,7 @@ function addData(props) {
   return (
     <Layout title="Add Data">
       <main>
+        <h2 className={styles.control}> Log Images</h2>
         <div className={styles.control}>
           <label htmlFor="name">Upload:</label>
           {/* Code snippet to file uploud */}

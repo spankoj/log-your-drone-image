@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
 import Layout from '../components/Layout';
+import styles from '../styles/Home.module.css';
 
 export default function Home({ exifData }) {
   const MapWithNoSSR = dynamic(() => import('../components/Map'), {
@@ -13,19 +14,22 @@ export default function Home({ exifData }) {
   const latitude =
     exifData.GPSInfo.GPSLatitude[0] + '.' + exifData.GPSInfo.GPSLatitude[1];
   console.log(exifData.GPSInfo.GPSAltitude[0]);
+  console.log(latitude);
   // alert(exifData.GPSInfo.GPSLatitude[0]);
-  alert(latitude);
+  // alert(latitude);
 
   return (
     <Layout>
-      <main>
-        <h2>Log Your Drone Image</h2>
-        <div>
+      <main className={styles.main}>
+        <h2>Your Drone Images</h2>
+        <div className={styles.div}>
           <MapWithNoSSR />
         </div>
-        <Link href="./add-data">
-          <a className="btn">Add Image</a>
-        </Link>
+        <div className={styles.div}>
+          <Link href="./add-data">
+            <a className="btn">Add Image</a>
+          </Link>
+        </div>
       </main>
     </Layout>
   );
