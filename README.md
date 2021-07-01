@@ -115,7 +115,10 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 1. Upload image
 
-- [ ] https://betterprogramming.pub/upload-files-to-next-js-with-api-routes-839ce9f28430
+- [x] https://betterprogramming.pub/upload-files-to-next-js-with-api-routes-839ce9f28430
+      succeded but need to have a img host
+- [ ] imgur: good for social media
+- [x] cloudinary https://andreaskeller.name/blog/react-upload-images-cloudinary
 
 - [x] get meta-data from image
       https://www.exif.org/

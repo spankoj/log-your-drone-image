@@ -1,7 +1,8 @@
 import React from 'react';
 import AddInput from '../components/AddInput';
+import ImageUploader from '../components/ImageUploader';
 import Layout from '../components/Layout';
-import { UiFileInputButton } from '../components/UiFileInputButton';
+// import { UiFileInputButton } from '../components/UiFileInputButton';
 import { uploadFileRequest } from '../domain/upload/upload.services';
 import styles from '../styles/AddData.module.css';
 
@@ -23,13 +24,14 @@ function addData(props) {
       <main>
         <h2 className={styles.control}> Log Images</h2>
         <div className={styles.control}>
-          <label htmlFor="name">Upload:</label>
+          {/* <label htmlFor="name">Upload:</label> */}
           {/* Code snippet to file uploud */}
-          <UiFileInputButton
+          {/* <UiFileInputButton
             label="Drone Image"
             uploadFileName="theFiles"
             onChange={onChange}
-          />
+          /> */}
+          <ImageUploader />
         </div>
         <AddInput />
       </main>
