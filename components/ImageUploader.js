@@ -37,6 +37,7 @@ export default function ImageUploader({ defaultImage }) {
 
         setImage(response.secure_url);
         console.log(response.secure_url);
+        console.log(response);
       }
     };
 
@@ -46,6 +47,9 @@ export default function ImageUploader({ defaultImage }) {
     );
     fd.append('tags', 'browser_upload');
     fd.append('file', file);
+    fd.append('ablak', 'ablak');
+    console.log('start');
+    console.log(fd);
     xhr.send(fd);
   }
   return (

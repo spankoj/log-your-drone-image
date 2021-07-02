@@ -1,46 +1,51 @@
-const imageInput = [
-  {
-    name: 'sopron',
-    category: 'building',
-    thumbnail: '?',
-    make: 'DJI',
-    model: 'FC7303',
-    date_time_original: '<Date 2021-06-24T18:39:49.000Z>',
-    GPSAltitude: 256.296,
-    latitude: 47.67731441666666,
-    longitude: 16.604556416666668,
-  },
-  {
-    name: 'amphitheater',
-    category: 'monument',
-    thumbnail: '?',
-    make: 'DJI',
-    model: 'FC7303',
-    date_time_original: '<Date 2021-06-28T16:00:59.000Z>',
-    GPSAltitude: 343.687,
-    latitude: 48.110387583333335,
-    longitude: 16.852299611111114,
-  },
-  {
-    name: 'heidentor',
-    category: 'monument',
-    thumbnail: '?',
-    make: 'DJI',
-    model: 'FC7303',
-    date_time_original: '<Date 2021-06-28T15:09:09.000Z>',
-    GPSAltitude: 201.612,
-    latitude: 48.10381872222222,
-    longitude: 16.85377491666667,
-  },
-  {
-    name: 'sonnensee',
-    category: 'landscape',
-    thumbnail: '?',
-    make: 'DJI',
-    model: 'FC7303',
-    date_time_original: '<Date 2021-06-28T08:32:54.000Z>',
-    GPSAltitude: 460.464,
-    latitude: 47.628182833333334,
-    longitude: 16.470125555555555,
-  },
-];
+import camelcaseKeys from 'camelcase-keys';
+import dotenvSafe from 'dotenv-safe';
+import postgres from 'postgres';
+
+dotenvSafe.config();
+
+// Connect only once to the database
+// https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
+function connectOneTimeToDatabase() {
+  let sql;
+
+  if (process.env.NODE_ENV === 'production') {
+    // Heroku needs SSL connections but
+    // has an "unauthorized" certificate
+    // https://devcenter.heroku.com/changelog-items/852
+    sql = postgres({ ssl: { rejectUnauthorized: false } });
+  } else {
+    if (!globalThis.__postgresSqlClient) {
+      globalThis.__postgresSqlClient = postgres();
+    }
+    sql = globalThis.__postgresSqlClient;
+  }
+  return sql;
+}
+
+// Connect to PostgreSQL
+const sql = connectOneTimeToDatabase();
+
+// // Connect to the database
+// const sql = postgres();
+
+// Perform first query
+
+export async function getProducts() {
+  const products = await sql`SELECT*FROM products`;
+  return products.map((prod) => camelcaseKeys(prod));
+}
+
+// Get single product
+
+export async function getProductBySlug(slug) {
+  const products = await sql`
+  SELECT
+  *
+  FROM
+  products
+  WHERE
+  slug = ${slug}`;
+
+  return products.map((prod) => camelcaseKeys(prod))[0];
+}
