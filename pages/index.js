@@ -1,5 +1,5 @@
-import fs from 'fs';
-import exif from 'jpeg-exif';
+// import fs from 'fs';
+// import exif from 'jpeg-exif';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
@@ -11,10 +11,10 @@ export default function Home({ exifData, images }) {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
-  const latitude =
-    exifData.GPSInfo.GPSLatitude[0] + '.' + exifData.GPSInfo.GPSLatitude[1];
+  // const latitude =
+  //   exifData.GPSInfo.GPSLatitude[0] + '.' + exifData.GPSInfo.GPSLatitude[1];
   // console.log(exifData.GPSInfo.GPSAltitude[0]);
-  console.log(exifData);
+  // console.log(exifData);
   // alert(exifData.GPSInfo.GPSLatitude[0]);
   // alert(latitude);
 
@@ -30,7 +30,7 @@ export default function Home({ exifData, images }) {
         <div className={styles.div}>
           <MapWithNoSSR />
         </div>
-        {images.length === 0 && <h3>No Images to show</h3>}
+        {/* {images.length === 0 && <h3>No Images to show</h3>} */}
       </main>
     </Layout>
   );
@@ -39,18 +39,18 @@ export default function Home({ exifData, images }) {
 // Import use get server side props syntax
 export async function getServerSideProps() {
   // Exif library code
-  const filePath = './public/uploads/DJI_0001.jpg';
-  const buffer = fs.readFileSync(filePath);
-  const exifData = exif.fromBuffer(buffer);
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/images',
-  );
-  const images = await res.json();
+  // const filePath = './public/uploads/DJI_0001.jpg';
+  // const buffer = fs.readFileSync(filePath);
+  // const exifData = exif.fromBuffer(buffer);
+  // const res = await fetch(
+  //   process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/images',
+  // );
+  // const images = await res.json();
 
   return {
     props: {
-      images,
-      exifData,
+      // images,
+      // exifData,
     },
   };
 }

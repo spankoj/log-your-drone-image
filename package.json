@@ -6,16 +6,19 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate": "dotenv ley"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "camelcase-keys": "^7.0.0",
+    "dotenv-cli": "^4.0.0",
     "dotenv-safe": "^8.2.0",
     "jpeg-exif": "^1.1.4",
     "leaflet": "^1.7.1",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.3.2",
+    "ley": "^0.7.1",
     "multer": "^1.4.2",
     "next": "11.0.0",
     "next-connect": "^0.10.1",

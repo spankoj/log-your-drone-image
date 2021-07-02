@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddInput from '../components/AddInput';
 import ImageUploader from '../components/ImageUploader';
 import Layout from '../components/Layout';
@@ -6,10 +6,20 @@ import Layout from '../components/Layout';
 import { uploadFileRequest } from '../domain/upload/upload.services';
 import styles from '../styles/AddData.module.css';
 
-interface IProps {}
-
 function addData(props) {
-  const onChange = async (formData: FormData) => {
+  const [data, setData] = useState({
+    name: '',
+    category: '',
+    make: '',
+    model: '',
+    dateTimeOriginal: '',
+    gpsAltitude: '',
+    gpsLatitude: '',
+    gpsLongitude: '',
+    secureUrl: '',
+  });
+
+  const onChange = async (formData) => {
     const response = await uploadFileRequest(formData, (event) => {
       console.log(
         `Current progress:`,
@@ -31,9 +41,9 @@ function addData(props) {
             uploadFileName="theFiles"
             onChange={onChange}
           /> */}
-          <ImageUploader />
+          <ImageUploader data={data} setData={setData} />
         </div>
-        <AddInput />
+        <AddInput data={data} setData={setData} />
       </main>
     </Layout>
   );

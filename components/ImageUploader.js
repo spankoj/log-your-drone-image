@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 
-export default function ImageUploader({ defaultImage }) {
+export default function ImageUploader({ defaultImage, data, setData }) {
   const fileSelect = useRef(null);
   const [image, setImage] = useState(defaultImage);
   const [progress, setProgress] = useState(0);
@@ -38,6 +38,16 @@ export default function ImageUploader({ defaultImage }) {
         setImage(response.secure_url);
         console.log(response.secure_url);
         console.log(response);
+        setData({
+          ...data,
+          make: response.image_metadata.Make,
+          model: response.image_metadata.Model,
+          dateTimeOriginal: response.image_metadata.DateTimeOriginal,
+          gpsAltitude: response.image_metadata.GPSAltitude,
+          gpsLatitude: response.image_metadata.GPSLatitude,
+          gpsLongitude: response.image_metadata.GPSLongitude,
+          secureUrl: response.secure_url,
+        });
       }
     };
 
