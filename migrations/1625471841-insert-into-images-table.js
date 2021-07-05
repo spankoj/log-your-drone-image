@@ -45,7 +45,7 @@ const images = [
     gps_latitude: '47 deg 37\' 41.46" N',
     gps_longitude: '16 deg 28\' 12.45" E',
     secure_url:
-      'https://res.cloudinary.com/spankoj/image/upload/v1625208747/xxc2bk9rf0onupbx5gob.jpg',
+      'https://res.cloudinary.com/spankoj/image/upload/v1625476236/drkwlwhfsr7dpoivbdqu.jpg',
   },
 ];
 

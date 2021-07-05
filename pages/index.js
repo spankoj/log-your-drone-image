@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import React from 'react';
+import ImageList from '../components/ImageList';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
@@ -30,6 +31,9 @@ export default function Home({ exifData, images }) {
         <div className={styles.div}>
           <MapWithNoSSR />
         </div>
+        <div className={styles.div}>
+          <ImageList images={images} />
+        </div>
         {/* {images.length === 0 && <h3>No Images to show</h3>} */}
       </main>
     </Layout>
@@ -47,9 +51,15 @@ export async function getServerSideProps() {
   // );
   // const images = await res.json();
 
+  const { getImages } = await import('../utils/database');
+
+  const images = await getImages();
+
+  console.log('images', images);
+
   return {
     props: {
-      // images,
+      images: images,
       // exifData,
     },
   };
