@@ -11,7 +11,7 @@ exports.up = async function up(sql) {
 		gps_altitude varchar(40) NOT NULL,
 		gps_latitude varchar(40) NOT NULL,
 		gps_longitude varchar(40) NOT NULL,
-		secure_url varchar(40) NOT NULL,
+		secure_url varchar(100) NOT NULL,
 		user_id int REFERENCES users (id) ON DELETE CASCADE
 		);
 `;
