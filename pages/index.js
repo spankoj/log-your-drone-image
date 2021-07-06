@@ -29,7 +29,7 @@ export default function Home({ exifData, images }) {
           </Link>
         </div>
         <div className={styles.div}>
-          <MapWithNoSSR />
+          <MapWithNoSSR images={images} />
         </div>
         <div className={styles.div}>
           <ImageList images={images} />

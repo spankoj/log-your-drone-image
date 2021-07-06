@@ -13,9 +13,19 @@ function AddInput({ data, setData }) {
   return (
     <form
       className={styles.form}
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/api/images', data);
+        const response = await fetch(`http://localhost:3000/api/images`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: data,
+          }),
+        });
+
+        // axios.post('http://localhost:3000/api/images', data);
       }}
     >
       <div className={styles.control}>

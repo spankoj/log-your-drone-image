@@ -47,7 +47,7 @@ export async function getImages() {
 //   return products.map((prod) => camelcaseKeys(prod))[0];
 // }
 
-export async function insertImage(
+export async function insertImage({
   name,
   category,
   make,
@@ -57,7 +57,18 @@ export async function insertImage(
   gpsLatitude,
   gpsLongitude,
   secureUrl,
-) {
+}) {
+  console.log(
+    name,
+    category,
+    make,
+    model,
+    dateTimeOriginal,
+    gpsAltitude,
+    gpsLatitude,
+    gpsLongitude,
+    secureUrl,
+  );
   const images = await sql`
     INSERT INTO images
       (name,
@@ -70,7 +81,7 @@ export async function insertImage(
       gps_longitude,
       secure_url)
     VALUES
-      (${name}, ${category}, ${make}, ${model},${dateTimeOriginal},${gpsAltitude},${gpsLatitude},${gpsLongitude},${secureUrl},)
+      (${name}, ${category}, ${make}, ${model},${dateTimeOriginal},${gpsAltitude},${gpsLatitude},${gpsLongitude},${secureUrl})
     RETURNING
       name,
       category,

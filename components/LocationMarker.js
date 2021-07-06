@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Marker, Popup, useMapEvents } from 'react-leaflet';
 
-function LocationMarker() {
-  const [position, setPosition] = useState([51.505, -0.09]);
+function LocationMarker({ images }) {
+  const [position, setPosition] = useState([47.325174, 16.491011]);
   const map = useMapEvents({
     click() {
       map.locate();
@@ -13,7 +13,7 @@ function LocationMarker() {
     },
   });
   return position === null ? null : (
-    <Marker position={position}>
+    <Marker position={images.gpsAltitude}>
       <Popup>
         <img
           src="https://res.cloudinary.com/spankoj/image/upload/v1625216939/daajx7gdq5ohgd2vg9c4.jpg"

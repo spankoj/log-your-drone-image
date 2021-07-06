@@ -14,6 +14,9 @@ function ImageItem({ img }) {
         <h3>{img.name}</h3>
         <h4>{img.category}</h4>
         <h4>{img.dateTimeOriginal}</h4>
+        <h4>{img.gpsAltitude}</h4>
+        <h4>{img.gpsLatitude}</h4>
+        <h4>{img.gpsLongitude}</h4>
       </div>
 
       {/* <div className={styles.link}>

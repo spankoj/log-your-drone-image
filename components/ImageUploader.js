@@ -67,10 +67,10 @@ export default function ImageUploader({ defaultImage, data, setData }) {
       {image ? (
         <img
           src={image.replace('upload/', 'upload/w_600/')}
-          style={{ height: 400, width: 600 }}
+          style={{ height: 200, width: 400 }}
         />
       ) : (
-        <div style={{ height: 400, width: 600 }}>
+        <div style={{ height: 200, width: 400 }}>
           <form>
             {progress === 0 ? (
               <div>
