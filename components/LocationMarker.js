@@ -13,16 +13,18 @@ function LocationMarker({ images }) {
     },
   });
   return position === null ? null : (
-    <Marker position={images.gpsAltitude}>
-      <Popup>
-        <img
-          src="https://res.cloudinary.com/spankoj/image/upload/v1625216939/daajx7gdq5ohgd2vg9c4.jpg"
-          alt=""
-          width="200"
-          height="200"
-        />
-      </Popup>
-    </Marker>
+    <div>
+      <Marker position={position}>
+        <Popup>
+          <img
+            src="https://res.cloudinary.com/spankoj/image/upload/v1625216939/daajx7gdq5ohgd2vg9c4.jpg"
+            alt=""
+            width="200"
+            height="200"
+          />
+        </Popup>
+      </Marker>
+    </div>
   );
 }
 

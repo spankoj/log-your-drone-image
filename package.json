@@ -14,7 +14,6 @@
     "camelcase-keys": "^7.0.0",
     "dotenv-cli": "^4.0.0",
     "dotenv-safe": "^8.2.0",
-    "jpeg-exif": "^1.1.4",
     "leaflet": "^1.7.1",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.3.2",

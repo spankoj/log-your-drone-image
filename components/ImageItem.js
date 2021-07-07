@@ -13,10 +13,11 @@ function ImageItem({ img }) {
       <div className={styles.info}>
         <h3>{img.name}</h3>
         <h4>{img.category}</h4>
-        <h4>{img.dateTimeOriginal}</h4>
-        <h4>{img.gpsAltitude}</h4>
+        <p>{`Date: ${img.dateTimeOriginal.split(' ')[0]} `}</p>
+        <p>{`Time: ${img.dateTimeOriginal.split(' ')[1]}`}</p>
+        {/* <h4>{img.gpsAltitude}</h4>
         <h4>{img.gpsLatitude}</h4>
-        <h4>{img.gpsLongitude}</h4>
+        <h4>{img.gpsLongitude}</h4> */}
       </div>
 
       {/* <div className={styles.link}>

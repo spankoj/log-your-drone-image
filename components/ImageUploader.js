@@ -63,9 +63,10 @@ export default function ImageUploader({ defaultImage, data, setData }) {
     xhr.send(fd);
   }
   return (
-    <>
+    <div>
       {image ? (
         <img
+          alt={'preview of upload '}
           src={image.replace('upload/', 'upload/w_600/')}
           style={{ height: 200, width: 400 }}
         />
@@ -92,6 +93,6 @@ export default function ImageUploader({ defaultImage, data, setData }) {
           </form>
         </div>
       )}
-    </>
+    </div>
   );
 }
