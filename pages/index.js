@@ -14,14 +14,13 @@ export default function Home({ images }) {
   return (
     <Layout>
       <main className={styles.main}>
-        <h2>Your Drone Images</h2>
         <div className={styles.div}>
+          <MapWithNoSSR images={images} />
+        </div>
+        <div className={styles.add}>
           <Link href="./add-data">
             <a className="btn">Add Image</a>
           </Link>
-        </div>
-        <div className={styles.div}>
-          <MapWithNoSSR images={images} />
         </div>
         <div className={styles.div}>
           <ImageList images={images} />

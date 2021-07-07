@@ -1,8 +1,10 @@
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 import 'leaflet/dist/leaflet.css';
 import React from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import LocationMarker from './LocationMarker';
 
 const Map = ({ images }) => {
@@ -77,26 +79,30 @@ const Map = ({ images }) => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* <LocationMarker images={images} /> */}
-
-        {images.map((image) => {
-          // alert(images.secureUrl);
-          console.log(image[0]);
-          return (
-            <Marker
-              position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
-              key={image.id}
-            >
-              <Popup>
-                <img
-                  src={image.secureUrl}
-                  alt="custom"
-                  width="200"
-                  height="200"
-                />
-              </Popup>
-            </Marker>
-          );
-        })}
+        <MarkerClusterGroup>
+          {images.map((image) => {
+            // alert(images.secureUrl);
+            console.log(image[0]);
+            return (
+              <Marker
+                position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
+                key={image.id}
+              >
+                <Popup>
+                  <img
+                    src={image.secureUrl}
+                    alt="custom"
+                    width="200"
+                    height="200"
+                  />
+                  <br />
+                  {image.name}
+                </Popup>
+                <Tooltip>{image.name}</Tooltip>
+              </Marker>
+            );
+          })}
+        </MarkerClusterGroup>
       </MapContainer>
     </div>
   );

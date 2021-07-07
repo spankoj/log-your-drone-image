@@ -6,6 +6,9 @@
 .div {
   margin-bottom: 20px;
 }
+.add {
+  text-align: right;
+}
 /* .container {
   min-height: 100vh;
   padding: 0 0.5rem;

@@ -123,29 +123,35 @@ Web page description: 'Web application to collect drone images and its meta-data
 - [x] get meta-data from image
       https://www.exif.org/
       npm: exif, exif-js
+- [x] Convert DMS unit of GPS data to dd (decimal)
+      https://stackoverflow.com/questions/22509712/javascript-gps-dms-format-to-decimal-format-function
 
 2. Input fields and button for name and category.
 
-- [ ] Create form
-- [ ] should it be a component?
-- [ ] input text with use state
-- [ ] input select simple (hard coded) later dinamic?
+- [x] Create form
+- [x] should it be a component?
+- [x] input text with use state
+- [x] input select simple (hard coded) later dinamic?
 
 3. place map in a div on a page
 
 - [x] show pin on map
-- [ ] show pin on map (based on gps data)
+- [x] show pin on map (based on gps data)
+- [x] use markercluster to group pins
+      https://github.com/YUzhva/react-leaflet-markercluster#getting-started
+      https://github.com/YUzhva/react-leaflet-markercluster#getting-started
 
-- show img preview on map by clicking on the pin
-  https://leafletjs.com/reference-1.7.1.html#imageoverlay
+- [x] show img preview on map by clicking on the pin
+      https://leafletjs.com/reference-1.7.1.html#imageoverlay
 
-- show list of img istances
+- [x] show list of img istances
 
 5. POST and GET images from data base
 
 - [x] create database schema
-- [ ] complete the data base schema and check it with Jose before creating tables
+- [x] complete the data base schema and check it with Jose before creating tables
 
 6. Store images?
 
-- hosting images servecies that get the image and returns a link. the link will be in the data basa (service will get it back) - memem scarper example
+- [x] hosting images servecies that get the image and returns a link.
+- [x] the link will be in the data basa (service will get it back) - memem scarper example

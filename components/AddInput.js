@@ -36,7 +36,7 @@ function AddInput({ data, setData }) {
           className={styles.input}
           type="text"
           name="name"
-          placeholder="best-drone-image-ever"
+          placeholder="Name it!"
           onChange={handleNameField}
         />
       </div>
@@ -53,6 +53,7 @@ function AddInput({ data, setData }) {
           <option value="building">Building</option>
           <option value="monument">Monument</option>
           <option value="landscape">Landscape</option>
+          <option value="landscape">Vegetation</option>
         </select>
       </div>
 
