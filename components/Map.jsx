@@ -70,7 +70,7 @@ const Map = ({ images }) => {
     <div>
       <MapContainer
         center={[47.68501, 16.59049]}
-        zoom={10}
+        zoom={6}
         scrollWheelZoom={false}
         style={{ height: 400, width: '100%' }}
       >
@@ -88,12 +88,12 @@ const Map = ({ images }) => {
                 position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
                 key={image.id}
               >
-                <Popup>
+                <Popup maxWidth={400}>
                   <img
                     src={image.secureUrl}
                     alt="custom"
-                    width="200"
-                    height="200"
+                    width="400"
+                    height="225"
                   />
                   <br />
                   {image.name}
