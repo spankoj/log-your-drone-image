@@ -139,7 +139,7 @@ Web page description: 'Web application to collect drone images and its meta-data
 - [x] show pin on map (based on gps data)
 - [x] use markercluster to group pins
       https://github.com/YUzhva/react-leaflet-markercluster#getting-started
-      https://github.com/YUzhva/react-leaflet-markercluster#getting-started
+      https://github.com/yuzhva/react-leaflet-markercluster
 
 - [x] show img preview on map by clicking on the pin
       https://leafletjs.com/reference-1.7.1.html#imageoverlay
@@ -170,3 +170,10 @@ Web page description: 'Web application to collect drone images and its meta-data
 - [ ] create button
 - [ ] show all details
 - [ ] place map there
+
+8. Drone flight planner
+
+- [ ] create page
+- [ ] show map
+- [ ] put markers on the map
+- [ ] generate list or
