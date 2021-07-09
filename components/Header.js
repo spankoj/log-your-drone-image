@@ -11,9 +11,8 @@ export default function Header(props) {
           <a>LYDI</a>
         </Link>
       </div>
+      <SearchField />
       <nav className={styles.nav}>
-        <SearchField />
-
         <ul>
           <li>
             <Link href="/">

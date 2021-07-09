@@ -1,8 +1,12 @@
+import { useRouter } from 'next/router';
 // import axios from 'axios';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';
+import { dmsToDecimal } from './Map';
 
 function AddInput({ data, setData }) {
+  const router = useRouter();
+
   const handleNameField = (e) => {
     setData({ ...data, name: e.target.value });
   };
@@ -23,6 +27,11 @@ function AddInput({ data, setData }) {
           body: JSON.stringify({
             data: data,
           }),
+        });
+        const coordsArray = dmsToDecimal(data.gpsLatitude, data.gpsLongitude);
+        router.push({
+          pathname: '/',
+          query: { coordsArray: coordsArray },
         });
 
         // axios.post('http://localhost:3000/api/images', data);

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React from 'react';
 import ImageList from '../components/ImageList';
 import Layout from '../components/Layout';
@@ -10,15 +11,20 @@ export default function Home({ images }) {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
+  const router = useRouter();
+  console.log(router.query);
 
   return (
     <Layout>
       <main className={styles.main}>
         <div className={styles.div}>
-          <MapWithNoSSR images={images} />
+          <MapWithNoSSR
+            images={images}
+            coordsFromUploadedImg={router.query.coordsArray}
+          />
         </div>
         <div className={styles.add}>
-          <Link href="./add-data">
+          <Link href="/add-data">
             <a className="btn">Add Image</a>
           </Link>
         </div>

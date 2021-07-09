@@ -33,19 +33,31 @@ export async function getImages() {
   return images.map((prod) => camelcaseKeys(prod));
 }
 
-// Get single product
+// Get single image
 
-// export async function getProductBySlug(slug) {
-//   const products = await sql`
-//   SELECT
-//   *
-//   FROM
-//   products
-//   WHERE
-//   slug = ${slug}`;
+export async function getImageById(id) {
+  const images = await sql`
+  SELECT
+  *
+  FROM
+  images
+  WHERE
+  id = ${id}`;
 
-//   return products.map((prod) => camelcaseKeys(prod))[0];
-// }
+  return images.map((img) => camelcaseKeys(img))[0];
+}
+// Delete single image
+export async function deleteImageById(id) {
+  const image = await sql`
+  DELETE
+  FROM
+  images
+  WHERE
+  id=${id}
+  `;
+
+  return image.map((img) => camelcaseKeys(img))[0];
+}
 
 export async function insertImage({
   name,

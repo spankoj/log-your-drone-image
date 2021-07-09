@@ -5,17 +5,21 @@
   margin: 20px 0;
   padding: 13px;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+  gap: 15px;
 }
 
 .img {
-  flex: 1;
   margin: 10px;
 }
 
 .info {
-  flex: 2;
 }
 .makemodel {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; */
+}
+.buttons {
   /* display: flex;
   flex-direction: row;
   justify-content: space-evenly; */
