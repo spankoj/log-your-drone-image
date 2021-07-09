@@ -1,0 +1,18 @@
+/* .label {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+} */
+.search {
+  height: 30px;
+  width: 200px;
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: 1px solid #dcdcdc;
+  background-color: white;
+  text-align: center;
+}

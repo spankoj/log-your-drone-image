@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styles from '../styles/Header.module.css';
+import SearchField from './SearchField';
 
 export default function Header(props) {
   return (
@@ -10,26 +11,25 @@ export default function Header(props) {
           <a>LYDI</a>
         </Link>
       </div>
-      <nav>
+      <nav className={styles.nav}>
+        <SearchField />
+
         <ul>
           <li>
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
-          <li>
-            <Link href="/map-test">
-              <a>MapTest</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-          </li>
+
           <li>
             <Link href="/images">
               <a>Images</a>
+            </Link>
+          </li>
+          <li></li>
+          <li>
+            <Link href="/map-test">
+              <a>MapTest</a>
             </Link>
           </li>
           <li>

@@ -117,7 +117,7 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 - [x] https://betterprogramming.pub/upload-files-to-next-js-with-api-routes-839ce9f28430
       succeded but need to have a img host
-- [ ] imgur: good for social media
+- [x] imgur: good for social media but wont be used in this project
 - [x] cloudinary https://andreaskeller.name/blog/react-upload-images-cloudinary
 
 - [x] get meta-data from image
@@ -146,6 +146,15 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 - [x] show list of img istances
 
+- [ ] Put layers on the map to filter out categories?
+
+4. Search fields
+
+- [x] Search for name and category
+      https://www.emgoto.com/react-search-bar/
+      https://github.com/steiningerjakob/next-js-ecommerce-store/blob/HEAD/util/database.ts
+- [ ] Search for place and time
+
 5. POST and GET images from data base
 
 - [x] create database schema
@@ -155,3 +164,9 @@ Web page description: 'Web application to collect drone images and its meta-data
 
 - [x] hosting images servecies that get the image and returns a link.
 - [x] the link will be in the data basa (service will get it back) - memem scarper example
+
+7. Single image page
+
+- [ ] create button
+- [ ] show all details
+- [ ] place map there

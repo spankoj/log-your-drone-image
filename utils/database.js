@@ -96,69 +96,24 @@ export async function insertImage({
   return images.map((img) => camelcaseKeys(img))[0];
 }
 
-// const images = [
-//   {
-//     name: 'mura',
-//     category: 'landscape',
-//     Make: 'samsung',
-//     Model: 'SM-G950F',
-//     DateTimeOriginal: '2019:07:26 10:57:57',
-//     GPSAltitude: '256.296',
-//     GPSAltitudeRef: 'Above Sea Level',
-//     GPSLatitude: '46 deg 31\' 52.00" N',
-//     GPSLatitudeRef: 'North',
-//     GPSLongitude: '16 deg 22\' 46.00" E',
-//     GPSLongitudeRef: 'East',
-//     url: 'http://res.cloudinary.com/spankoj/image/upload/v1625211951/s1xmzde0mfmwkquwpazp.jpg',
-//     secure_url:
-//       'https://res.cloudinary.com/spankoj/image/upload/v1625211951/s1xmzde0mfmwkquwpazp.jpg',
-//   },
-//   {
-//     name: 'sopron',
-//     category: 'building',
-//     Make: 'DJI',
-//     Model: 'FC7303',
-//     DateTimeOriginal: '2021:06:24 20:39:49',
-//     GPSAltitude: '256.296 m',
-//     GPSAltitudeRef: 'Above Sea Level',
-//     GPSLatitude: '47 deg 40\' 38.33" N',
-//     GPSLatitudeRef: 'North',
-//     GPSLongitude: '16 deg 36\' 16.40" E',
-//     GPSLongitudeRef: 'East',
-//     url: 'http://res.cloudinary.com/spankoj/image/upload/v1625211853/el13fpuffgowboitpeda.jpg',
-//     secure_url:
-//       'https://res.cloudinary.com/spankoj/image/upload/v1625211853/el13fpuffgowboitpeda.jpg',
-//   },
-//   {
-//     name: 'amphitheatre',
-//     category: 'landscape',
-//     Make: 'DJI',
-//     Model: 'FC7303',
-//     DateTimeOriginal: '2021:06:28 18:00:59',
-//     GPSAltitude: '343.687 m',
-//     GPSAltitudeRef: 'Above Sea Level',
-//     GPSLatitude: '48 deg 6\' 37.40" N',
-//     GPSLatitudeRef: 'North',
-//     GPSLongitude: '16 deg 51\' 8.28" E',
-//     GPSLongitudeRef: 'East',
-//     url: 'http://res.cloudinary.com/spankoj/image/upload/v1625211760/jiluggwarypfl2d2yeys.jpg',
-//     secure_url:
-//       'https://res.cloudinary.com/spankoj/image/upload/v1625211760/jiluggwarypfl2d2yeys.jpg',
-//   },
-//   {
-//     name: 'sonnensee',
-//     category: 'landscape',
-//     Make: 'DJI',
-//     Model: 'FC7303',
-//     DateTimeOriginal: '2021:06:28 10:32:54',
-//     GPSAltitude: '460.464 m',
-//     GPSAltitudeRef: 'Above Sea Level',
-//     GPSLatitude: '47 deg 37\' 41.46" N',
-//     GPSLatitudeRef: 'North',
-//     GPSLongitude: '16 deg 28\' 12.45" E',
-//     GPSLongitudeRef: 'East',
-//     url: 'http://res.cloudinary.com/spankoj/image/upload/v1625208747/xxc2bk9rf0onupbx5gob.jpg',
-//     secure_url:
-//       'https://res.cloudinary.com/spankoj/image/upload/v1625208747/xxc2bk9rf0onupbx5gob.jpg',
-//   },
-// ];
+// adapted from:
+// https://www.emgoto.com/react-search-bar/
+
+export async function searchFunction(query) {
+  const images = await sql`
+    SELECT
+      *
+    FROM
+      images`;
+  if (!query) {
+    return images.map((img) => camelcaseKeys(img));
+  } else {
+    return images
+      .filter((b) => {
+        return Object.values(b).some((str) =>
+          String(str).toLowerCase().includes(query),
+        );
+      })
+      .map((img) => camelcaseKeys(img));
+  }
+}

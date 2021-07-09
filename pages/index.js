@@ -22,10 +22,9 @@ export default function Home({ images }) {
             <a className="btn">Add Image</a>
           </Link>
         </div>
-        <div className={styles.div}>
+        {/* <div className={styles.div}>
           <ImageList images={images} />
-        </div>
-        {/* {images.length === 0 && <h3>No Images to show</h3>} */}
+        </div> */}
       </main>
     </Layout>
   );

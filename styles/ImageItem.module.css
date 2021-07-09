@@ -15,7 +15,11 @@
 .info {
   flex: 2;
 }
-
+.makemodel {
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-evenly; */
+}
 @media (max-width: 600px) {
   .event {
     flex-direction: column;

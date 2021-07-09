@@ -43,7 +43,12 @@
   height: 40px;
   width: 40px;
 }
+.nav {
+  display: flex;
+  justify-content: space-between;
 
+  align-items: center;
+}
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
