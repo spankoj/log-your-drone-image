@@ -8,7 +8,7 @@ function register() {
   console.log(password);
 
   return (
-    <Layout title="Login">
+    <Layout title="Register">
       <div>
         <form
           onSubmit={async (event) => {
@@ -29,6 +29,7 @@ function register() {
             <div>
               <label>Username</label>
               <input
+                required
                 placeholder="Username"
                 value={username}
                 onChange={(e) => {
@@ -39,6 +40,8 @@ function register() {
             <div>
               <label>Password</label>
               <input
+                type="password"
+                required
                 placeholder="Password"
                 value={password}
                 onChange={(e) => {

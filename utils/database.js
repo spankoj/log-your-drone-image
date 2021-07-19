@@ -147,7 +147,7 @@ export async function saveUser(username, password) {
 export async function getUserByName(username) {
   const user = await sql`
 SELECT
-username
+*
 FROM
 users
 WHERE

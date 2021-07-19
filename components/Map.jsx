@@ -76,8 +76,6 @@ const Map = ({ images, coordsFromUploadedImg }) => {
   });
   console.log(`coordArray:`, coordArray);
 
-  // console.log(images);
-
   return (
     <div>
       <MapContainer

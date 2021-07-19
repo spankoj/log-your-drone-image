@@ -11,6 +11,7 @@ export default function Home({ images }) {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
+
   const router = useRouter();
   console.log(router.query);
 
