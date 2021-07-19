@@ -11,7 +11,11 @@
 .img {
   margin: 10px;
 }
-
+.main {
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+}
 .info {
 }
 .makemodel {

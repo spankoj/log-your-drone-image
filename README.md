@@ -177,3 +177,8 @@ Web page description: 'Web application to collect drone images and its meta-data
 - [ ] show map
 - [ ] put markers on the map
 - [ ] generate list or
+
+SAFETY ISSUE:
+
+- [ ] _unsigned-uploads_ may result with a certain Storage/Transformations quotas abuse).
+      https://support.cloudinary.com/hc/en-us/articles/208335975-How-safe-secure-is-it-to-use-unsigned-upload-from-web-browsers-or-mobile-clients-

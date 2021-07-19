@@ -2,8 +2,16 @@ import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
+import Link from 'next/link';
 import React from 'react';
-import { MapContainer, Marker, Popup, TileLayer, Tooltip } from 'react-leaflet';
+import {
+  LayersControl,
+  MapContainer,
+  Marker,
+  Popup,
+  TileLayer,
+  Tooltip,
+} from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 // require('~leaflet/dist/leaflet.css'); // inside .js file
@@ -80,35 +88,53 @@ const Map = ({ images, coordsFromUploadedImg }) => {
         scrollWheelZoom={false}
         style={{ height: 450, width: '100%' }}
       >
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {/* <LocationMarker images={images} /> */}
-        <MarkerClusterGroup>
-          {images.map((image) => {
-            // alert(images.secureUrl);
-            console.log(image[0]);
-            return (
-              <Marker
-                position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
-                key={image.id}
-              >
-                <Popup maxWidth={400}>
-                  <img
-                    src={image.secureUrl}
-                    alt="custom"
-                    width="400"
-                    height="225"
-                  />
-                  <br />
-                  {image.name}
-                </Popup>
-                <Tooltip>{image.name}</Tooltip>
-              </Marker>
-            );
-          })}
-        </MarkerClusterGroup>
+        <LayersControl position="topright">
+          <LayersControl.BaseLayer checked name="OpenStreetMap">
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="BlackAndWhite">
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+          <LayersControl.BaseLayer name="ESRI">
+            <TileLayer
+              attribution='&copy; <a href="Esri &mdash">Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community</a> contributors'
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
+            />
+          </LayersControl.BaseLayer>
+          {/* <LocationMarker images={images} /> */}
+          <MarkerClusterGroup>
+            {images.map((image) => {
+              // alert(images.secureUrl);
+              console.log(image[0]);
+              return (
+                <Marker
+                  position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
+                  key={image.id}
+                >
+                  <Popup maxWidth={400}>
+                    <Link href={`/images/${image.id}`}>
+                      <img
+                        src={image.secureUrl}
+                        alt="custom"
+                        width="400"
+                        height="225"
+                      />
+                    </Link>
+                    {image.name}
+                  </Popup>
+                  <Tooltip>{image.name}</Tooltip>
+                </Marker>
+              );
+            })}
+          </MarkerClusterGroup>
+        </LayersControl>
       </MapContainer>
     </div>
   );

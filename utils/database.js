@@ -129,3 +129,63 @@ export async function searchFunction(query) {
       .map((img) => camelcaseKeys(img));
   }
 }
+
+// Save user
+export async function saveUser(username, password) {
+  const user = await sql`
+    INSERT INTO users
+      (username,
+      password)
+    VALUES
+      (${username},${password})
+    RETURNING
+    id, username
+  `;
+  return user.map((user) => camelcaseKeys(user))[0];
+}
+
+export async function getUserByName(username) {
+  const user = await sql`
+SELECT
+username
+FROM
+users
+WHERE
+username = ${username}
+`;
+
+  return user.map((user) => camelcaseKeys(user))[0];
+}
+// session table-be
+export async function insertSession(token, userId) {
+  const session = await sql`
+  INSERT INTO sessions
+    (token,
+    user_id)
+  VALUES
+    (${token},${userId})
+  RETURNING
+  token, user_id
+`;
+  return session.map((user) => camelcaseKeys(user))[0];
+}
+
+// get session token
+export async function getSessionByToken(token) {
+  const session = await sql`
+  SELECT
+  token
+  FROM
+  sessions
+  WHERE
+  token = ${token}
+  `;
+
+  return session.map((token) => camelcaseKeys(token))[0];
+}
+
+export async function deleteExpiredSessions() {
+  await sql`
+    DELETE FROM sessions WHERE expiry_timestamp < NOW();
+  `;
+}

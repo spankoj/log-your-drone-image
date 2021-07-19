@@ -19,12 +19,12 @@ a {
 }
 
 p {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
-h1 {
+/* h1 {
   margin-bottom: 20px;
-}
+} */
 
 .btn {
   display: inline-block;

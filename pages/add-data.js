@@ -17,16 +17,6 @@ function addData(props) {
     secureUrl: '',
   });
 
-  const onChange = async (formData) => {
-    const response = await uploadFileRequest(formData, (event) => {
-      console.log(
-        `Current progress:`,
-        Math.round((event.loaded * 100) / event.total),
-      );
-    });
-
-    console.log('response', response);
-  };
   return (
     <Layout title="Add Data">
       <main>

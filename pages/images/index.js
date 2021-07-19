@@ -1,3 +1,4 @@
+import nextCookies from 'next-cookies';
 import { useEffect, useState } from 'react';
 import ImageList from '../../components/ImageList';
 import Layout from '../../components/Layout';
@@ -45,7 +46,9 @@ export default function Login({ imagesFetched, query }) {
 }
 
 export async function getServerSideProps(context) {
-  const { getImages, searchFunction } = await import('../../utils/database');
+  const { getImages, searchFunction, getSessionByToken } = await import(
+    '../../utils/database'
+  );
 
   const imagesFetched = await getImages();
 
@@ -60,6 +63,20 @@ export async function getServerSideProps(context) {
   console.log('context:', query);
   console.log('query:', query);
   console.log('images:', filteredImages);
+  //van-é token a frontenden
+  const token = nextCookies(context).token;
+
+  const session = await getSessionByToken(token);
+  console.log(session);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login?returnTo=/images',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
