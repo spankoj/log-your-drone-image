@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 // import axios from 'axios';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';
-import { dmsToDecimal } from './Map';
+import { dmsToDecimal } from './MapLeaflet';
 
 function AddInput({ data, setData }) {
   const router = useRouter();
@@ -62,7 +62,7 @@ function AddInput({ data, setData }) {
           <option value="building">Building</option>
           <option value="monument">Monument</option>
           <option value="landscape">Landscape</option>
-          <option value="landscape">Vegetation</option>
+          <option value="vegetation">Vegetation</option>
         </select>
       </div>
 

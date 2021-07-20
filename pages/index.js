@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ images }) {
-  const MapWithNoSSR = dynamic(() => import('../components/Map'), {
+  const MapWithNoSSR = dynamic(() => import('../components/MapLeaflet'), {
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
@@ -29,6 +29,17 @@ export default function Home({ images }) {
             <a className="btn">Add Image</a>
           </Link>
         </div>
+        <select
+          className={styles.input}
+          name="category"
+          id="category"
+          // onChange={handleCategory}
+        >
+          <option value="building">Building</option>
+          <option value="monument">Monument</option>
+          <option value="landscape">Landscape</option>
+          <option value="landscape">Vegetation</option>
+        </select>
         {/* <div className={styles.div}>
           <ImageList images={images} />
         </div> */}

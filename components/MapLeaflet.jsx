@@ -2,8 +2,10 @@ import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
+import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
 import {
   LayersControl,
   MapContainer,
@@ -11,12 +13,14 @@ import {
   Popup,
   TileLayer,
   Tooltip,
+  useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 
 // require('~leaflet/dist/leaflet.css'); // inside .js file
 // require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
 // import LocationMarker from './LocationMarker';
+
 export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
   // make one string of the lat and long data
   const dmsString = [gpsLatitude, gpsLongitude].join(' ');
@@ -60,17 +64,9 @@ export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
     dmsToLonLat(dmsParsedObj.longitude),
   ];
   return lonLat;
-  console.log(lonLat);
 };
 
-const Map = ({ images, coordsFromUploadedImg }) => {
-  // GPS unit converter
-
-  // console.log(
-  //   'function:',
-  //   dmsToDecimal(images[0].gpsLatitude, images[0].gpsLongitude),
-  // );
-
+const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
   const coordArray = images.map((image) => {
     return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
   });
@@ -83,7 +79,7 @@ const Map = ({ images, coordsFromUploadedImg }) => {
           coordsFromUploadedImg ? coordsFromUploadedImg : [47.68501, 16.59049]
         }
         zoom={coordsFromUploadedImg ? 15 : 6}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
         style={{ height: 450, width: '100%' }}
       >
         <LayersControl position="topright">
@@ -127,15 +123,48 @@ const Map = ({ images, coordsFromUploadedImg }) => {
                     </Link>
                     {image.name}
                   </Popup>
-                  <Tooltip>{image.name}</Tooltip>
+                  <Tooltip permanent>{image.name}</Tooltip>
                 </Marker>
               );
             })}
           </MarkerClusterGroup>
         </LayersControl>
+
+        <EsriLeafletGeoSearch
+          position="topleft"
+          useMapBounds={false}
+          placeholder={'keres'}
+          providers={{
+            arcgisOnlineProvider: {
+              apikey:
+                'AAPK51bc7353b41a46ec83f7f7e8710e1efcI8p8NjQL1PPTbZqjXii16XUDHPLDQS87gQG8CNiguxkLsn7a5xcuHb-3rjv_l07P',
+            },
+            featureLayerProvider: {
+              url: 'https://services.arcgis.com/BG6nSlhZSAWtExvp/ArcGIS/rest/services/GIS_Day_Registration_Form_2019_Hosted_View_Layer/FeatureServer/0',
+              searchFields: ['event_name', 'host_organization'],
+              label: 'GIS Day Events 2019',
+              bufferRadius: 5000,
+              formatSuggestion: function (feature) {
+                return (
+                  feature.properties.event_name +
+                  ' - ' +
+                  feature.properties.host_organization
+                );
+              },
+            },
+          }}
+          eventHandlers={{
+            requeststart: () => console.log('Started request...'),
+            requestend: () => console.log('Ended request...'),
+            results: (r) => console.log(r),
+          }}
+          key={
+            'AAPK51bc7353b41a46ec83f7f7e8710e1efcI8p8NjQL1PPTbZqjXii16XUDHPLDQS87gQG8CNiguxkLsn7a5xcuHb-3rjv_l07P'
+          }
+        />
       </MapContainer>
     </div>
   );
 };
 
-export default Map;
+export default MapLeaflet;
