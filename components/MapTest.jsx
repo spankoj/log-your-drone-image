@@ -4,7 +4,9 @@ import 'leaflet/dist/leaflet.css';
 import React from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import ExternalStateExample from './ExternalStateExample';
-import LocationMarker from './LocationMarker';
+
+// import GeoSearch from './GeoSearch';
+// import LocationMarker from './LocationMarker';
 
 const Map = () => {
   return (
