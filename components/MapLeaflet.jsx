@@ -5,6 +5,7 @@ import 'react-leaflet-markercluster/dist/styles.min.css';
 import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
+import { BasemapLayer, FeatureLayer } from 'react-esri-leaflet';
 import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
 import {
   LayersControl,
@@ -83,7 +84,7 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
         style={{ height: 450, width: '100%' }}
       >
         <LayersControl position="topright">
-          <LayersControl.BaseLayer checked name="OpenStreetMap">
+          <LayersControl.BaseLayer checked name="OSM">
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -96,13 +97,39 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
               url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
             />
           </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="ESRI">
-            <TileLayer
-              attribution='&copy; <a href="Esri &mdash">Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community</a> contributors'
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png"
-            />
+
+          <LayersControl.BaseLayer name="Streets">
+            <BasemapLayer name="Streets" />
           </LayersControl.BaseLayer>
-          {/* <LocationMarker images={images} /> */}
+
+          <LayersControl.BaseLayer name="Topographic">
+            <BasemapLayer name="Topographic" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="Imagery">
+            <BasemapLayer name="Imagery" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="Terrain">
+            <BasemapLayer name="Terrain" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="Physical">
+            <BasemapLayer name="Physical" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="ShadedRelief">
+            <BasemapLayer name="ShadedRelief" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="DarkGray">
+            <BasemapLayer name="DarkGray" />
+          </LayersControl.BaseLayer>
+
+          <LayersControl.BaseLayer name="Gray">
+            <BasemapLayer name="Gray" />
+          </LayersControl.BaseLayer>
+
           <MarkerClusterGroup>
             {images.map((image) => {
               // alert(images.secureUrl);
@@ -133,7 +160,7 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
         <EsriLeafletGeoSearch
           position="topleft"
           useMapBounds={false}
-          placeholder={'keres'}
+          placeholder={'Search for places or addresses'}
           providers={{
             arcgisOnlineProvider: {
               apikey:
