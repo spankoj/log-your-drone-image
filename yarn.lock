@@ -393,6 +393,33 @@
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.3.3.tgz#85bc74ba782fb7aa3a514d11767832b0e3bc6803"
   integrity sha512-LKVP3cgXBT9RYj+t+9FDKwS5tdI+rPBXaNSkma7hvqy35lc7mAokC2zsqWJH0LaqIt3B962nuYI77hsJoT1gow==
 
+"@types/cookie@^0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.4.1.tgz#bfd02c1f2224567676c1545199f87c3a861d878d"
+  integrity sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==
+
+"@types/dotenv-safe@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@types/dotenv-safe/-/dotenv-safe-8.1.2.tgz#72f126969f445af5654efd3167deabc2cbc6c24e"
+  integrity sha512-R/B/wIMda6lRE2P1H0vwSoJsV78IOkhccE4vIvmKZQNXOIjiU0QyJsUXwSotBxOPZFZ/oOnjCa3+kK5kVJwGyw==
+  dependencies:
+    dotenv "^8.2.0"
+
+"@types/esri-leaflet-geocoder@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@types/esri-leaflet-geocoder/-/esri-leaflet-geocoder-2.2.3.tgz#d372b5f9f13501fb99a3777e6b5b42ac69718a80"
+  integrity sha512-SyJuRZlPARrPWwx7L5KrvKLNZcbyw4CuCzyj7e3kgo7MZFpFCkGpO7Po5J6kvZt+OdT138u3WpXRVnRNNrSeRQ==
+  dependencies:
+    "@types/esri-leaflet" "*"
+    "@types/leaflet" "*"
+
+"@types/esri-leaflet@*", "@types/esri-leaflet@^2.1.9":
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/@types/esri-leaflet/-/esri-leaflet-2.1.9.tgz#4561969b120801cd0705f873640cb5545ff436aa"
+  integrity sha512-Z3GLyJTepEsEpo2FB3eRqSRxGw1Y2Vohpuu5Qp87tc3MGbXjhSUTRYldoaACZj6JQQJuOnyK9FLMdSziq5C1Ow==
+  dependencies:
+    "@types/leaflet" "*"
+
 "@types/geojson@*":
   version "7946.0.7"
   resolved "https://registry.npmjs.org/@types/geojson/-/geojson-7946.0.7.tgz"
@@ -407,6 +434,20 @@
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+
+"@types/leaflet.markercluster@*", "@types/leaflet.markercluster@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@types/leaflet.markercluster/-/leaflet.markercluster-1.4.5.tgz#dc4457e2dff9baaacc17c9c04c65ab69b5f361f7"
+  integrity sha512-R9Ql//z6muSGI5mPfr+FaKQQB7EIdQQyivYweVSdOrWr8WyNNFcSwfl+mqGYJFhRRCO/6lbZiM3scEyp9LdaFg==
+  dependencies:
+    "@types/leaflet" "*"
+
+"@types/leaflet@*":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@types/leaflet/-/leaflet-1.7.4.tgz#bb9430f69d588ca5829c1ba82657e179454f93a1"
+  integrity sha512-a3qYlMwJ62+WRoiDmYODUD4KywA14jP2XohAkAWtELGuMAD3MohZa/MmIvQDqF52xNI9OYaY8BMsL+9z7yf2HQ==
+  dependencies:
+    "@types/geojson" "*"
 
 "@types/leaflet@^1.7.3":
   version "1.7.3"
@@ -440,6 +481,23 @@
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.5.tgz"
   integrity sha512-ikqukEhH4H9gr4iJCmQVNzTB307kROe3XFfHAOTxOXPOw7lAoEXnM5KWTkzeANGL5Ce6ABfiMl/zJBYNi7ObmQ==
   dependencies:
+    "@types/react" "*"
+
+"@types/react-leaflet-markercluster@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-leaflet-markercluster/-/react-leaflet-markercluster-2.0.0.tgz#ac8274b0cd68823ee0e87c7fdb29bbcf02d62879"
+  integrity sha512-Q3JUQcg9Ey28xtPOrVp6XZHtLf6LTyOsYY96niSa6QgSMGn6Lm0/y/cQYTs24JG+74i2VEFF+pfJ9AYy2+GnwA==
+  dependencies:
+    "@types/leaflet" "*"
+    "@types/leaflet.markercluster" "*"
+    "@types/react-leaflet" "*"
+
+"@types/react-leaflet@*":
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/@types/react-leaflet/-/react-leaflet-2.8.2.tgz#85b8d82d5204eee792dedd45ccb555c35b8ae2ac"
+  integrity sha512-Iel8Vd1bSCD38Yhiqcmm/+9hjPEdd39LFE3tBMbOytq3QAQsC3LDrbo6ifoh8JbpqPbCsQPo9Wx5OELHixEShg==
+  dependencies:
+    "@types/leaflet" "*"
     "@types/react" "*"
 
 "@types/react@*":
