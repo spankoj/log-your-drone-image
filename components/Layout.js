@@ -14,8 +14,8 @@ export default function Layout({
     <div>
       <Head>
         <title>{title}</title>
-        <meta name="discription" content={description}></meta>
-        <meta name="keywords" content={keywords}></meta>
+        <meta name="discription" content={description} />
+        <meta name="keywords" content={keywords} />
       </Head>
 
       <Header />

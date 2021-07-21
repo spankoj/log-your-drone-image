@@ -4,7 +4,7 @@ import ImageUploader from '../components/ImageUploader';
 import Layout from '../components/Layout';
 import styles from '../styles/AddData.module.css';
 
-function addData(props) {
+function AddData(props) {
   const [data, setData] = useState({
     name: '',
     category: '',
@@ -30,4 +30,4 @@ function addData(props) {
   );
 }
 
-export default addData;
+export default AddData;

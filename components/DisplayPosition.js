@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
-const center = [51.505, -0.09];
-const zoom = 13;
+const center = [47.68501, 16.59049];
+const zoom = 6;
 
 function DisplayPosition({ map }) {
   const [position, setPosition] = useState(map.getCenter());

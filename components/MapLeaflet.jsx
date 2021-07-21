@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BasemapLayer, FeatureLayer } from 'react-esri-leaflet';
 import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
 import {
@@ -17,10 +17,7 @@ import {
   useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-
-// require('~leaflet/dist/leaflet.css'); // inside .js file
-// require('react-leaflet-markercluster/dist/styles.min.css'); // inside .js file
-// import LocationMarker from './LocationMarker';
+import DisplayPosition from './DisplayPosition';
 
 export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
   // make one string of the lat and long data
@@ -68,19 +65,21 @@ export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
 };
 
 const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
-  const coordArray = images.map((image) => {
-    return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
-  });
-  console.log(`coordArray:`, coordArray);
+  // const coordArray = images.map((image) => {
+  //   return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
+  // });
+  // external stat example
+  const [map, setMap] = useState(null);
 
-  return (
-    <div>
+  const displayMap = useMemo(
+    () => (
       <MapContainer
         center={
           coordsFromUploadedImg ? coordsFromUploadedImg : [47.68501, 16.59049]
         }
         zoom={coordsFromUploadedImg ? 15 : 6}
         scrollWheelZoom={true}
+        whenCreated={setMap}
         style={{ height: 450, width: '100%' }}
       >
         <LayersControl position="topright">
@@ -132,15 +131,13 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
 
           <MarkerClusterGroup>
             {images.map((image) => {
-              // alert(images.secureUrl);
-              console.log(image[0]);
               return (
                 <Marker
                   position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
                   key={image.id}
                 >
                   <Popup maxWidth={400}>
-                    <Link href={`/images/${image.id}`}>
+                    <Link href={`/images/${image.id}`} passHref>
                       <img
                         src={image.secureUrl}
                         alt="custom"
@@ -160,7 +157,7 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
         <EsriLeafletGeoSearch
           position="topleft"
           useMapBounds={false}
-          placeholder={'Search for places or addresses'}
+          placeholder="Search for places or addresses"
           providers={{
             arcgisOnlineProvider: {
               apikey:
@@ -185,11 +182,17 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
             requestend: () => console.log('Ended request...'),
             results: (r) => console.log(r),
           }}
-          key={
-            'AAPK51bc7353b41a46ec83f7f7e8710e1efcI8p8NjQL1PPTbZqjXii16XUDHPLDQS87gQG8CNiguxkLsn7a5xcuHb-3rjv_l07P'
-          }
+          key="AAPK51bc7353b41a46ec83f7f7e8710e1efcI8p8NjQL1PPTbZqjXii16XUDHPLDQS87gQG8CNiguxkLsn7a5xcuHb-3rjv_l07P"
         />
       </MapContainer>
+    ),
+    [],
+  );
+
+  return (
+    <div>
+      {map ? <DisplayPosition map={map} /> : null}
+      {displayMap}
     </div>
   );
 };

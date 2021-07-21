@@ -25,17 +25,13 @@ export default function Header(props) {
               <a>Images</a>
             </Link>
           </li>
-          <li></li>
-          <li>
-            <Link href="/map-test">
-              <a>MapTest</a>
-            </Link>
-          </li>
+
           <li>
             <Link href="/login">
               <a>Login</a>
             </Link>
           </li>
+
           <li>
             <Link href="/register">
               <a>Register</a>

@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-// import axios from 'axios';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';
 import { dmsToDecimal } from './MapLeaflet';
@@ -13,7 +12,7 @@ function AddInput({ data, setData }) {
   const handleCategory = (e) => {
     setData({ ...data, category: e.target.value });
   };
-  console.log(data);
+
   return (
     <form
       className={styles.form}
@@ -28,13 +27,13 @@ function AddInput({ data, setData }) {
             data: data,
           }),
         });
+
         const coordsArray = dmsToDecimal(data.gpsLatitude, data.gpsLongitude);
+
         router.push({
           pathname: '/',
           query: { coordsArray: coordsArray },
         });
-
-        // axios.post('http://localhost:3000/api/images', data);
       }}
     >
       <div className={styles.control}>
@@ -49,6 +48,7 @@ function AddInput({ data, setData }) {
           onChange={handleNameField}
         />
       </div>
+
       <div className={styles.control}>
         <label className={styles.label} htmlFor="category">
           Category

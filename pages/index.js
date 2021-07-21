@@ -2,12 +2,12 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';
-import ImageList from '../components/ImageList';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
 export default function Home({ images }) {
   const MapWithNoSSR = dynamic(() => import('../components/MapLeaflet'), {
+    // eslint-disable-next-line react/no-unstable-nested-components
     loading: () => <p>A map is loading</p>,
     ssr: false,
   });
