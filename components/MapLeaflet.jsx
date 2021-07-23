@@ -77,10 +77,10 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
         center={
           coordsFromUploadedImg ? coordsFromUploadedImg : [47.68501, 16.59049]
         }
-        zoom={coordsFromUploadedImg ? 15 : 6}
+        zoom={coordsFromUploadedImg ? 18 : 6}
         scrollWheelZoom={true}
         whenCreated={setMap}
-        style={{ height: 450, width: '100%' }}
+        style={{ height: 500, width: '100%', zIndex: 1 }}
       >
         <LayersControl position="topright">
           <LayersControl.BaseLayer checked name="OSM">
@@ -105,29 +105,29 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
             <BasemapLayer name="Topographic" />
           </LayersControl.BaseLayer>
 
+          <LayersControl.BaseLayer name="ShadedRelief">
+            <BasemapLayer name="ShadedRelief" />
+          </LayersControl.BaseLayer>
+
           <LayersControl.BaseLayer name="Imagery">
             <BasemapLayer name="Imagery" />
           </LayersControl.BaseLayer>
 
-          <LayersControl.BaseLayer name="Terrain">
+          {/* <LayersControl.BaseLayer name="Terrain">
             <BasemapLayer name="Terrain" />
           </LayersControl.BaseLayer>
 
           <LayersControl.BaseLayer name="Physical">
             <BasemapLayer name="Physical" />
-          </LayersControl.BaseLayer>
+          </LayersControl.BaseLayer> */}
 
-          <LayersControl.BaseLayer name="ShadedRelief">
-            <BasemapLayer name="ShadedRelief" />
-          </LayersControl.BaseLayer>
-
-          <LayersControl.BaseLayer name="DarkGray">
+          {/* <LayersControl.BaseLayer name="DarkGray">
             <BasemapLayer name="DarkGray" />
           </LayersControl.BaseLayer>
 
           <LayersControl.BaseLayer name="Gray">
             <BasemapLayer name="Gray" />
-          </LayersControl.BaseLayer>
+          </LayersControl.BaseLayer> */}
 
           <MarkerClusterGroup>
             {images.map((image) => {
@@ -139,6 +139,7 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
                   <Popup maxWidth={400}>
                     <Link href={`/images/${image.id}`} passHref>
                       <img
+                        className="pointer"
                         src={image.secureUrl}
                         alt="custom"
                         width="400"

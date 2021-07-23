@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import styles from '../styles/DisplayPosition.module.css';
 
 const center = [47.68501, 16.59049];
-const zoom = 6;
+const zoom = 8;
 
 function DisplayPosition({ map }) {
   const [position, setPosition] = useState(map.getCenter());
@@ -21,10 +22,13 @@ function DisplayPosition({ map }) {
     };
   }, [map, onMove]);
   return (
-    <p>
-      latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
-      <button onClick={onClick}>reset</button>
-    </p>
+    <div className={styles.latlong}>
+      <button className={styles.btnPosition} onClick={onClick}>
+        Reset
+      </button>
+      <span className={styles.span}>Latitude:</span> {position.lat.toFixed(4)},{' '}
+      <span className={styles.span}>Longitude:</span> {position.lng.toFixed(4)}{' '}
+    </div>
   );
 }
 

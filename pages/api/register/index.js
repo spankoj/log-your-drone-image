@@ -10,19 +10,16 @@ import {
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {
-    console.log(req.body);
-
     const username = req.body.username;
     const password = req.body.password;
 
     const currentUser = await getUserByName(username);
     if (currentUser) {
-      console.log('foglalt');
     } else {
       const hashedPassword = await argon2.hash(password);
 
       const savedUser = await saveUser(username, hashedPassword);
-      console.log(savedUser);
+
       // saveUser(username, hashedPassword);
 
       // const userId = await saveUser();

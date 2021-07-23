@@ -46,7 +46,7 @@
     "@types/react-leaflet-markercluster": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "4.21.0",
     "@typescript-eslint/parser": "4.21.0",
-    "@upleveled/eslint-config-upleveled": "1.14.5",
+    "@upleveled/eslint-config-upleveled": "1.15.0",
     "autoprefixer": "^10.2.6",
     "babel-eslint": "10.1.0",
     "eslint": "7.23.0",

@@ -24,9 +24,29 @@
   justify-content: space-evenly; */
 }
 .buttons {
-  /* display: flex;
-  flex-direction: row;
-  justify-content: space-evenly; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+/* .details {
+
+}
+.btn {
+
+} */
+
+.btnDel {
+  display: inline-block;
+  background: gray;
+  color: #fff;
+  padding: 5px 20px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+}
+.btnDel:hover {
+  opacity: 0.9;
 }
 @media (max-width: 600px) {
   .event {

@@ -13,23 +13,22 @@ export default function Home({ images }) {
   });
 
   const router = useRouter();
-  console.log(router.query);
 
   return (
     <Layout>
       <main className={styles.main}>
+        <div className={styles.add}>
+          <Link href="/add-data">
+            <a className="btn">Add Image</a>
+          </Link>
+        </div>
         <div className={styles.div}>
           <MapWithNoSSR
             images={images}
             coordsFromUploadedImg={router.query.coordsArray}
           />
         </div>
-        <div className={styles.add}>
-          <Link href="/add-data">
-            <a className="btn">Add Image</a>
-          </Link>
-        </div>
-        <select
+        {/* <select
           className={styles.input}
           name="category"
           id="category"
@@ -39,10 +38,7 @@ export default function Home({ images }) {
           <option value="monument">Monument</option>
           <option value="landscape">Landscape</option>
           <option value="landscape">Vegetation</option>
-        </select>
-        {/* <div className={styles.div}>
-          <ImageList images={images} />
-        </div> */}
+        </select> */}
       </main>
     </Layout>
   );
@@ -52,8 +48,6 @@ export async function getServerSideProps() {
   const { getImages } = await import('../utils/database');
 
   const images = await getImages();
-
-  console.log('images:', images);
 
   return {
     props: {

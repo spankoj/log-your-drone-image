@@ -1,0 +1,25 @@
+.btnPosition {
+  display: inline-block;
+  background: gray;
+  color: #fff;
+  padding: 5px 20px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+}
+
+.btnPosition:hover {
+  opacity: 0.8;
+}
+
+.span {
+  font-weight: 600;
+}
+.latlong {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+  padding: 5px;
+  gap: 15px;
+}

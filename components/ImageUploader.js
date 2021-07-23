@@ -147,10 +147,25 @@ export default function ImageUploader({ defaultImage, setData, data }) {
     // working solution------------------------------------
     <div>
       <div>
-        <button className={'btn'} onClick={openCloudinaryWidget} type="button">
+        <button
+          className="btn-secondary"
+          onClick={openCloudinaryWidget}
+          type="button"
+        >
           Upload
         </button>
       </div>
+
+      {data.secureUrl ? (
+        <img
+          alt={'preview of upload '}
+          src={data.secureUrl}
+          style={{ height: 200, width: 400 }}
+        />
+      ) : (
+        ''
+      )}
+
       {/* {image ? (
         <img
           alt={'preview of upload '}
