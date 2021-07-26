@@ -1,12 +1,6 @@
 import argon2 from 'argon2';
 import cookie from 'cookie';
-import crypto from 'crypto';
-import {
-  deleteExpiredSessions,
-  getUserByName,
-  insertSession,
-  saveUser,
-} from '../../../utils/database';
+import { getUserByName, insertSession } from '../../../utils/database';
 
 const handler = async (req, res) => {
   if (req.method === 'POST') {

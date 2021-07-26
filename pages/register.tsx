@@ -39,9 +39,13 @@ function Register() {
         >
           <div>
             <div className={styles.control}>
-              <label className={styles.label}>Username</label>
+              <label className={styles.label} htmlFor="username">
+                Username
+              </label>
               <input
                 className={styles.input}
+                type="text"
+                id="username"
                 required
                 placeholder="username"
                 value={username}
@@ -51,10 +55,13 @@ function Register() {
               />
             </div>
             <div className={styles.control}>
-              <label className={styles.label}>Password</label>
+              <label className={styles.label} htmlFor="password">
+                Password
+              </label>
               <input
                 className={styles.input}
                 type="password"
+                id="password"
                 required
                 placeholder="password"
                 value={password}
