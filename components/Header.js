@@ -1,8 +1,14 @@
+import nextCookies from 'next-cookies';
 import Link from 'next/link';
+import { useState } from 'react';
 import styles from '../styles/Header.module.css';
 import SearchField from './SearchField';
 
-export default function Header() {
+// import cookies from 'next-cookies'
+
+export default function Header({ token }) {
+  console.log(token);
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>

@@ -22,7 +22,7 @@ import {
   TileLayer,
   Tooltip,
 } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
+// import MarkerClusterGroup from 'react-leaflet-markercluster';
 import DisplayPosition from './DisplayPosition';
 
 export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
@@ -152,30 +152,31 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
             <BasemapLayer name="Gray" />
           </LayersControl.BaseLayer> */}
 
-          <MarkerClusterGroup>
-            {images.map((image) => {
-              return (
-                <Marker
-                  position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
-                  key={image.id}
-                >
-                  <Popup maxWidth={400}>
-                    <Link href={`/images/${image.id}`} passHref>
-                      <img
-                        className="pointer"
-                        src={image.secureUrl}
-                        alt="custom"
-                        width="400"
-                        height="225"
-                      />
-                    </Link>
-                    {image.name}
-                  </Popup>
-                  <Tooltip permanent>{image.name}</Tooltip>
-                </Marker>
-              );
-            })}
-          </MarkerClusterGroup>
+          {/* <MarkerClusterGroup> */}
+          {images.map((image) => {
+            return (
+              <div key={image.id}></div>
+              // <Marker
+              //   position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
+              //   key={image.id}
+              // >
+              //   <Popup maxWidth={400}>
+              //     <Link href={`/images/${image.id}`} passHref>
+              //       <img
+              //         className="pointer"
+              //         src={image.secureUrl}
+              //         alt="custom"
+              //         width="400"
+              //         height="225"
+              //       />
+              //     </Link>
+              //     {image.name}
+              //   </Popup>
+              //   <Tooltip permanent>{image.name}</Tooltip>
+              // </Marker>
+            );
+          })}
+          {/* </MarkerClusterGroup> */}
         </LayersControl>
 
         <EsriLeafletGeoSearch
