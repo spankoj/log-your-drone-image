@@ -50,9 +50,6 @@ export default function ImageUploader({ setData, data }) {
                 active: true,
               },
             },
-            // maxImageWidth: 1000,
-            // maxImageHeight: 1000,
-          },
         },
         (error, result) => {
           if (!error && result && result.event === 'success') {

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "dotenv ley"
+    "migrate": "dotenv ley",
+    "heroku-postbuild": "yarn migrate up && yarn build"
   },
   "dependencies": {
     "argon2": "^0.28.2",
@@ -21,7 +22,6 @@
     "esri-leaflet-geocoder": "^3.0.0",
     "leaflet": "^1.7.1",
     "leaflet-defaulticon-compatibility": "^0.1.1",
-    "leaflet-fullscreen": "^1.0.2",
     "leaflet.markercluster": "^1.5.0",
     "ley": "^0.7.1",
     "next": "11.0.0",
@@ -65,5 +65,8 @@
     "eslint-plugin-unicorn": "33.0.0",
     "postcss": "^8.3.5",
     "typescript": "4.2.4"
-  }
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
