@@ -1,5 +1,7 @@
+/* eslint-disable unicorn/prefer-node-protocol */
 import argon2 from 'argon2';
 import cookie from 'cookie';
+import crypto from 'crypto';
 import { getUserByName, insertSession } from '../../../utils/database';
 
 const handler = async (req, res) => {

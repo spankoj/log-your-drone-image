@@ -1,5 +1,6 @@
 import argon2 from 'argon2';
 import cookie from 'cookie';
+import crypto from 'crypto';
 import {
   deleteExpiredSessions,
   getUserByName,
@@ -13,6 +14,7 @@ const handler = async (req, res) => {
     const password = req.body.password;
 
     const currentUser = await getUserByName(username);
+
     if (currentUser) {
     } else {
       const hashedPassword = await argon2.hash(password);

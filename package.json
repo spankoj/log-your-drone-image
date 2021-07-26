@@ -15,6 +15,7 @@
     "camelcase-keys": "^7.0.0",
     "cloudinary": "^1.26.2",
     "cookie": "^0.4.1",
+    "crypto": "^1.0.1",
     "dotenv-cli": "^4.0.0",
     "dotenv-safe": "^8.2.0",
     "esri-leaflet": "^3.0.2",
