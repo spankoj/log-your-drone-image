@@ -1,9 +1,8 @@
-import nextCookies from 'next-cookies';
 /* eslint-disable @typescript-eslint/naming-convention */
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
@@ -13,13 +12,11 @@ const MapWithNoSSR = dynamic(() => import('../components/MapLeaflet'), {
   ssr: false,
 });
 
-export default function Home({ images, token }) {
-  const [cookie, setCookie] = useState(token);
-
+export default function Home({ images }) {
   const router = useRouter();
-  console.log(token);
+
   return (
-    <Layout token={cookie}>
+    <Layout>
       <main className={styles.main}>
         <div className={styles.add}>
           <Link href="/add-data">
@@ -49,17 +46,14 @@ export default function Home({ images, token }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const { getImages } = await import('../utils/database');
 
   const images = await getImages();
 
-  const token = nextCookies(context).token;
-  console.log(token);
   return {
     props: {
       images: images,
-      token: token,
     },
   };
 }

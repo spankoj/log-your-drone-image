@@ -3,13 +3,7 @@ import styles from '../styles/Layout.module.css';
 import Footer from './Footer';
 import Header from './Header';
 
-export default function Layout({
-  token,
-  title,
-  keywords,
-  description,
-  children,
-}) {
+export default function Layout({ title, keywords, description, children }) {
   return (
     <div>
       <Head>
@@ -18,7 +12,7 @@ export default function Layout({
         <meta name="keywords" content={keywords} />
       </Head>
 
-      <Header token={token} />
+      <Header />
 
       <div className={styles.container}>{children}</div>
 
