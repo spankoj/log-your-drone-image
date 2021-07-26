@@ -1,14 +1,20 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../components/Layout';
+import styles from '../styles/LogReg.module.css';
 
 export default function Login() {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   return (
     <Layout title="Login">
-      <div>
+      <div className={styles.container}>
+        <h2 style={{ fontFamily: 'Julius Sans One', textAlign: 'center' }}>
+          Login
+        </h2>
         <form
+          className={styles.form}
           onSubmit={async (event) => {
             event.preventDefault();
             const response = await fetch('/api/login', {
@@ -26,14 +32,23 @@ export default function Login() {
               setUsername('');
               setPassword('');
               alert('Invalid credentials!');
+              router.push({
+                pathname: '/register',
+              });
+            } else {
+              alert('Login successful!');
+              router.push({
+                pathname: '/',
+              });
             }
           }}
         >
           <div>
-            <div>
-              <label>Login Username</label>
+            <div className={styles.control}>
+              <label className={styles.label}>Username</label>
               <input
-                placeholder="Username"
+                className={styles.input}
+                placeholder="username"
                 required
                 value={username}
                 onChange={(e) => {
@@ -41,12 +56,13 @@ export default function Login() {
                 }}
               />
             </div>
-            <div>
-              <label>Login Password</label>
+            <div className={styles.control}>
+              <label className={styles.label}>Password</label>
               <input
+                className={styles.input}
                 type="password"
                 required
-                placeholder="Password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -54,7 +70,7 @@ export default function Login() {
               />
             </div>
           </div>
-          <button>Submit</button>
+          <button className={styles.inputBtn}>Submit</button>
         </form>
       </div>
     </Layout>

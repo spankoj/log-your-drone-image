@@ -6,7 +6,7 @@ import styles from '../../styles/Images.module.css';
 import { convertQueryValueToStringLike } from '../../utils/context';
 
 export default function Login({ imagesFetched, query }) {
-  const [images, setImages] = useState([...imagesFetched]); //g
+  const [images, setImages] = useState([...imagesFetched]);
 
   const filterImagesById = (id) => {
     const updatedImages = images.filter((img) => img.id !== id);
@@ -38,9 +38,6 @@ export default function Login({ imagesFetched, query }) {
           />
         </div>
       </main>
-      {/* <Link href="/">
-        <a>Home</a>
-      </Link> */}
     </Layout>
   );
 }
@@ -57,10 +54,6 @@ export async function getServerSideProps(context) {
   const query = convertQueryValueToStringLike(context.query.s);
   const filteredImages = await searchFunction(query);
 
-  // console.log('context:', context);
-  // console.log('context:', query);
-  // console.log('query:', query);
-  // console.log('images:', filteredImages);
   //van-é token a frontenden
   const token = nextCookies(context).token;
 

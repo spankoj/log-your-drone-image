@@ -4,7 +4,7 @@ import ImageItem from './ImageItem';
 function ImageList({ filteredImages, filterImagesById }) {
   return (
     <div>
-      <h2>Image list</h2>
+      <h2 style={{ fontFamily: 'Julius Sans One' }}>Image list</h2>
       {filteredImages.map((img) => {
         return (
           <ImageItem

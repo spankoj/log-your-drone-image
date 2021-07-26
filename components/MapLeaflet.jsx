@@ -3,9 +3,11 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet/dist/leaflet.css';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
+// import 'leaflet-fullscreen/dist/Leaflet.fullscreen.js';
+// import 'leaflet-fullscreen/dist/leaflet.fullscreen.css';
 import Link from 'next/link';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { BasemapLayer, FeatureLayer } from 'react-esri-leaflet';
+import React, { useMemo, useState } from 'react';
+import { BasemapLayer } from 'react-esri-leaflet';
 import EsriLeafletGeoSearch from 'react-esri-leaflet/plugins/EsriLeafletGeoSearch';
 import {
   LayersControl,
@@ -14,7 +16,6 @@ import {
   Popup,
   TileLayer,
   Tooltip,
-  useMap,
 } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import DisplayPosition from './DisplayPosition';
@@ -22,11 +23,9 @@ import DisplayPosition from './DisplayPosition';
 export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
   // make one string of the lat and long data
   const dmsString = [gpsLatitude, gpsLongitude].join(' ');
-  // console.log(dmsString);
 
   const dmsToLonLatRegex = /[-]{0,1}[\d.]*[\d]|([NSEW])+/g;
   const dmsParsed = dmsString.match(dmsToLonLatRegex);
-  // console.log(dmsParsed);
 
   const dmsParsedObj = {
     latitude: {
@@ -65,15 +64,34 @@ export const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
 };
 
 const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
-  // const coordArray = images.map((image) => {
-  //   return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
-  // });
-  // external stat example
+  const coordArray = images.map((image) => {
+    return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
+  });
+
+  // FullScreenMode - not working
+  // const mapRef = useRef();
+
+  // useEffect(() => {
+  //   const { current = {} } = mapRef;
+  //   const { leafletElement: map } = current;
+  //   map.on('fullscreenchange', handleOnToggleFullscreen);
+  // }, []);
+
+  // function handleOnToggleFullscreen() {
+  //   const { current = {} } = mapRef;
+  //   const { leafletElement: map } = current;
+  //   console.log(`Fullscreen: ${map.isFullscreen() ? 'yes' : 'no'}`);
+  // }
+
+  // external state example
   const [map, setMap] = useState(null);
 
   const displayMap = useMemo(
     () => (
       <MapContainer
+        // FullScreenMode - not working
+        // ref={mapRef}
+        // fullscreenControl={true}
         center={
           coordsFromUploadedImg ? coordsFromUploadedImg : [47.68501, 16.59049]
         }

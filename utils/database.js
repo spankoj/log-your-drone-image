@@ -26,7 +26,7 @@ function connectOneTimeToDatabase() {
 // Connect to PostgreSQL
 const sql = connectOneTimeToDatabase();
 
-//Perform first query
+// Perform first query
 
 export async function getImages() {
   const images = await sql`SELECT*FROM images`;

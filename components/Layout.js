@@ -3,13 +3,7 @@ import styles from '../styles/Layout.module.css';
 import Footer from './Footer';
 import Header from './Header';
 
-export default function Layout({
-  title,
-  keywords,
-  description,
-  children,
-  ...props
-}) {
+export default function Layout({ title, keywords, description, children }) {
   return (
     <div>
       <Head>

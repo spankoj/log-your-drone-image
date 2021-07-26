@@ -1,16 +1,21 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
+import styles from '../styles/LogReg.module.css';
 
-function register() {
+function Register() {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  console.log(username);
-  console.log(password);
 
   return (
     <Layout title="Register">
-      <div>
+      <div className={styles.container}>
+        <h2 style={{ fontFamily: 'Julius Sans One', textAlign: 'center' }}>
+          Register
+        </h2>
         <form
+          className={styles.form}
           onSubmit={async (event) => {
             event.preventDefault();
             const response = await fetch('/api/register', {
@@ -23,26 +28,35 @@ function register() {
                 password: password,
               }),
             });
+            const result = await response.json();
+            if (result.success) {
+              alert('User Created!');
+            }
+            router.push({
+              pathname: '/',
+            });
           }}
         >
           <div>
-            <div>
-              <label>Username</label>
+            <div className={styles.control}>
+              <label className={styles.label}>Username</label>
               <input
+                className={styles.input}
                 required
-                placeholder="Username"
+                placeholder="username"
                 value={username}
                 onChange={(e) => {
                   setUsername(e.target.value);
                 }}
               />
             </div>
-            <div>
-              <label>Password</label>
+            <div className={styles.control}>
+              <label className={styles.label}>Password</label>
               <input
+                className={styles.input}
                 type="password"
                 required
-                placeholder="Password"
+                placeholder="password"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -50,11 +64,11 @@ function register() {
               />
             </div>
           </div>
-          <button>Submit</button>
+          <button className={styles.inputBtn}>Submit</button>
         </form>
       </div>
     </Layout>
   );
 }
 
-export default register;
+export default Register;
