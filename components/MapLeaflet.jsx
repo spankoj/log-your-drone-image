@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-const-assign */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -209,7 +210,7 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
         />
       </MapContainer>
     ),
-    [],
+    [coordsFromUploadedImg, images],
   );
 
   return (
