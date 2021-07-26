@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import nextCookies from 'next-cookies';
 import { useEffect, useState } from 'react';
 import ImageList from '../../components/ImageList';
@@ -54,7 +55,7 @@ export async function getServerSideProps(context) {
   const query = convertQueryValueToStringLike(context.query.s);
   const filteredImages = await searchFunction(query);
 
-  //van-é token a frontenden
+  // van-é token a frontenden
   const token = nextCookies(context).token;
 
   const session = await getSessionByToken(token);

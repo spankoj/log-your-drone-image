@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRouter } from 'next/router';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';

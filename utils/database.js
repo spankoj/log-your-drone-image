@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
 import postgres from 'postgres';
