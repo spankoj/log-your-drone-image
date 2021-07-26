@@ -6,14 +6,14 @@ import React from 'react';
 import Layout from '../components/Layout';
 import styles from '../styles/Home.module.css';
 
-const MapWithNoSSR = dynamic(() => import('../components/MapLeaflet'), {
-  // eslint-disable-next-line react/no-unstable-nested-components
-  loading: () => <p>A map is loading</p>,
-  ssr: false,
-});
-
 export default function Home({ images }) {
   const router = useRouter();
+
+  const MapWithNoSSR = dynamic(() => import('../components/MapLeaflet'), {
+    // eslint-disable-next-line react/no-unstable-nested-components
+    loading: () => <p>A map is loading</p>,
+    ssr: false,
+  });
 
   return (
     <Layout>
