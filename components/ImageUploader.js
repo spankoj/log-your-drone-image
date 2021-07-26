@@ -1,17 +1,16 @@
-// import cloudinary from 'cloudinary';
 import axios from 'axios';
 import React from 'react';
 
 // import styles from '../styles/ImageUploader.module.css';
 
 export default function ImageUploader({ setData, data }) {
-  const generateSignature = function (callback, params_to_sign) {
-    const { data } = axios.post(
-      'https://localhost:3000/api/upload',
-      params_to_sign,
-    );
-    callback(data);
-  };
+  // const generateSignature = function (callback, params_to_sign) {
+  //   const { data } = axios.post(
+  //     'https://localhost:3000/api/upload',
+  //     params_to_sign,
+  //   );
+  //   callback(data);
+  // };
 
   const createCloudinaryWidget = () => {
     if (typeof window !== 'undefined') {
@@ -50,6 +49,7 @@ export default function ImageUploader({ setData, data }) {
                 active: true,
               },
             },
+          },
         },
         (error, result) => {
           if (!error && result && result.event === 'success') {
@@ -79,7 +79,6 @@ export default function ImageUploader({ setData, data }) {
   };
 
   return (
-    // working solution------------------------------------
     <div>
       <div>
         <button
@@ -93,7 +92,7 @@ export default function ImageUploader({ setData, data }) {
 
       {data.secureUrl ? (
         <img
-          alt={'preview of upload '}
+          alt="preview of upload "
           src={data.secureUrl}
           style={{ height: 200, width: 400 }}
         />
