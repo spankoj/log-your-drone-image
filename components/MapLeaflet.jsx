@@ -155,25 +155,24 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
           {/* <MarkerClusterGroup> */}
           {images.map((image) => {
             return (
-              <div key={image.id}></div>
-              // <Marker
-              //   position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
-              //   key={image.id}
-              // >
-              //   <Popup maxWidth={400}>
-              //     <Link href={`/images/${image.id}`} passHref>
-              //       <img
-              //         className="pointer"
-              //         src={image.secureUrl}
-              //         alt="custom"
-              //         width="400"
-              //         height="225"
-              //       />
-              //     </Link>
-              //     {image.name}
-              //   </Popup>
-              //   <Tooltip permanent>{image.name}</Tooltip>
-              // </Marker>
+              <Marker
+                position={dmsToDecimal(image.gpsLatitude, image.gpsLongitude)}
+                key={image.id}
+              >
+                <Popup maxWidth={400}>
+                  <Link href={`/images/${image.id}`} passHref>
+                    <img
+                      className="pointer"
+                      src={image.secureUrl}
+                      alt="custom"
+                      width="400"
+                      height="225"
+                    />
+                  </Link>
+                  {image.name}
+                </Popup>
+                <Tooltip permanent>{image.name}</Tooltip>
+              </Marker>
             );
           })}
           {/* </MarkerClusterGroup> */}
