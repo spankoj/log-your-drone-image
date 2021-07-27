@@ -30,13 +30,16 @@ function ImageItem({ img, filterImagesById }) {
           <button
             className={styles.btnDel}
             onClick={async () => {
-              const response = await fetch(`http://localhost:3000/api/images`, {
-                method: 'DELETE',
-                headers: {
-                  'Content-Type': 'application/json',
+              const response = await fetch(
+                `https://log-your-drone-image.herokuapp.com/api/images`,
+                {
+                  method: 'DELETE',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ id: img.id }),
                 },
-                body: JSON.stringify({ id: img.id }),
-              });
+              );
 
               if (response.status === 200) {
                 filterImagesById(img.id);
