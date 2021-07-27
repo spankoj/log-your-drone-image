@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import styles from '../../styles/Images.module.css';
 import { convertQueryValueToStringLike } from '../../utils/context';
 
-export default function Login({ imagesFetched, query }) {
+export default function ImageListPage({ imagesFetched, query }) {
   const [images, setImages] = useState([...imagesFetched]);
 
   const filterImagesById = (id) => {
