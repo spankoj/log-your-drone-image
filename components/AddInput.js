@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRouter } from 'next/router';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';
-import { dmsToDecimal } from './MapLeaflet';
 
 function AddInput({ data, setData }) {
   const router = useRouter();
@@ -12,6 +10,49 @@ function AddInput({ data, setData }) {
   };
   const handleCategory = (e) => {
     setData({ ...data, category: e.target.value });
+  };
+
+  const dmsToDecimal = function (gpsLatitude, gpsLongitude) {
+    // make one string of the lat and long data
+    const dmsString = [gpsLatitude, gpsLongitude].join(' ');
+
+    const dmsToLonLatRegex = /[-]{0,1}[\d.]*[\d]|([NSEW])+/g;
+    const dmsParsed = dmsString.match(dmsToLonLatRegex);
+
+    const dmsParsedObj = {
+      latitude: {
+        degree: dmsParsed[0],
+        minute: dmsParsed[1],
+        second: dmsParsed[2],
+        direction: dmsParsed[3],
+      },
+      longitude: {
+        degree: dmsParsed[4],
+        minute: dmsParsed[5],
+        second: dmsParsed[6],
+        direction: dmsParsed[7],
+      },
+    };
+    const dmsToLonLat = function (o) {
+      let n = NaN;
+      if (o) {
+        const t = Number(o.degree),
+          d = 'undefined' != typeof o.minute ? Number(o.minute) / 60 : 0,
+          l = 'undefined' != typeof o.second ? Number(o.second) / 3600 : 0,
+          r =
+            o.direction ||
+            (null !== r && /[SW]/i.test(r) && (t = -1 * Math.abs(t)));
+
+        n = 0 > t ? t - d - l : t + d + l;
+      }
+      return n;
+    };
+
+    const lonLat = [
+      dmsToLonLat(dmsParsedObj.latitude),
+      dmsToLonLat(dmsParsedObj.longitude),
+    ];
+    return lonLat;
   };
 
   return (

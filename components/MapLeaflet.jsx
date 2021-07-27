@@ -73,30 +73,12 @@ const MapLeaflet = ({ images, coordsFromUploadedImg }) => {
     return dmsToDecimal(image.gpsLatitude, image.gpsLongitude);
   });
 
-  // FullScreenMode - not working
-  // const mapRef = useRef();
-
-  // useEffect(() => {
-  //   const { current = {} } = mapRef;
-  //   const { leafletElement: map } = current;
-  //   map.on('fullscreenchange', handleOnToggleFullscreen);
-  // }, []);
-
-  // function handleOnToggleFullscreen() {
-  //   const { current = {} } = mapRef;
-  //   const { leafletElement: map } = current;
-  //   console.log(`Fullscreen: ${map.isFullscreen() ? 'yes' : 'no'}`);
-  // }
-
   // external state example
   const [map, setMap] = useState(null);
 
   const displayMap = useMemo(
     () => (
       <MapContainer
-        // FullScreenMode - not working
-        // ref={mapRef}
-        // fullscreenControl={true}
         center={
           coordsFromUploadedImg ? coordsFromUploadedImg : [47.68501, 16.59049]
         }
