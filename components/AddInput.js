@@ -63,15 +63,18 @@ function AddInput({ data, setData }) {
       className={styles.form}
       onSubmit={async (e) => {
         e.preventDefault();
-        const response = await fetch(`http://localhost:3000/api/images`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+        const response = await fetch(
+          `https://log-your-drone-image.herokuapp.com/api/images`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: data,
+            }),
           },
-          body: JSON.stringify({
-            data: data,
-          }),
-        });
+        );
 
         const coordsArray = dmsToDecimal(data.gpsLatitude, data.gpsLongitude);
 
