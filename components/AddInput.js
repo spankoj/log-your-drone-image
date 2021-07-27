@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-const-assign */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { useRouter } from 'next/router';
 import React from 'react';
 import styles from '../styles/AddInput.module.css';
