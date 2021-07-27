@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <img className={styles.img} src="/images/favicon-lydi.png" alt="icon" />
+        <img className={styles.img} src="/images/faviconLydi.png" alt="icon" />
         <Link href="/">
           <a>LYDI</a>
         </Link>
