@@ -16,14 +16,7 @@ function AddData() {
     gpsLongitude: '',
     secureUrl: '',
   });
-  // const ImageUploaderSsr = dynamic(
-  //   () => import('../components/ImageUploader'),
-  //   {
-  //     // eslint-disable-next-line react/no-unstable-nested-components
-  //     loading: () => <p>A map is loading</p>,
-  //     ssr: false,
-  //   },
-  // );
+
   return (
     <Layout title="Add Data">
       <main>
